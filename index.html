@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tarea M6AE3 - ABP3</title>
+
+  
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-image: url('/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 30px;
+}
+  
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 400px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+   h1 {
+      margin-top: 0;
+      color: #faf7f7;
+      font-size: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #faf7f7;
+      font-size: 20px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      padding: 5px 0;
+      font-size: 16px;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .resultado {
+      background: #e8f4ff;
+      padding: 10px;
+      border-left: 4px solid #3498db;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+<h1>Tarea M6AE3 - ABP3</h1>
+<br>
+<h2>Conjuntos de controles radio</h2> 
+<div id="app" class="container">
+
+
+  <div class="section">
+    <h2>1. Selecciona tu nivel de estudios:</h2>
+
+    <label>
+      <input type="radio" value="Primarios" v-model="estudios">
+      Primarios
+    </label>
+
+    <label>
+      <input type="radio" value="Secundarios" v-model="estudios">
+      Secundarios
+    </label>
+
+    <label>
+      <input type="radio" value="Universitarios" v-model="estudios">
+      Universitarios
+    </label>
+
+    <label>
+      <input type="radio" value="Postgrado" v-model="estudios">
+      Postgrado
+    </label>
+
+    <div class="resultado">
+      <strong>Estudios seleccionados:</strong> {{ estudios }}
+    </div>
+  </div>
+
+  <hr>
+
+
+  <div class="section">
+    <h2>2. Selecciona un día de la semana:</h2>
+
+    <select v-model="diaSeleccionado">
+      <option disabled value="">-- Selecciona un día --</option>
+      <option v-for="dia in diasSemana" :key="dia" :value="dia">
+        {{ dia }}
+      </option>
+    </select>
+
+    <div class="resultado" v-if="diaSeleccionado">
+      <strong>Día seleccionado:</strong> {{ diaSeleccionado }}
+    </div>
+  </div>
+
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      estudios: 'Universitarios', 
+      diasSemana: [
+        'Lunes', 'Martes', 'Miércoles',
+        'Jueves', 'Viernes', 'Sábado', 'Domingo'
+      ],
+      diaSeleccionado: '' 
+    }
+  }
+}).mount("#app");
+</script>
+
+</body>
+</html>
